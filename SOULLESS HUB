@@ -1,0 +1,73 @@
+-- SOULLESS SCRIPTS | CENTRAL LOADER
+-- One loadstring for all supported experiences.
+-- Uses Roblox Universe IDs (game.GameId).
+
+local SCRIPTS = {
+    [66654135] = {
+        name = "Murder Mystery 2",
+        url = "https://raw.githubusercontent.com/aeternus-acheron/mm2/main/murda%20man"
+    },
+
+    [3808081382] = {
+        name = "The Strongest Battlegrounds",
+        url = "https://raw.githubusercontent.com/aeternus-acheron/jjs/main/jjs.script"
+    },
+
+    [10766972131] = {
+        name = "Throw Food for Animals",
+        url = "https://raw.githubusercontent.com/aeternus-acheron/throw-food/refs/heads/main/throw"
+    },
+
+    [10057403337] = {
+        name = "Deagle Arena",
+        url = "https://raw.githubusercontent.com/aeternus-acheron/deagle/main/hold%20me"
+    },
+
+    [1016936714] = {
+        name = "Your Bizarre Adventure",
+        url = "https://raw.githubusercontent.com/aeternus-acheron/your-bizzare-adventure/refs/heads/main/yba"
+    }
+}
+
+local selected = SCRIPTS[game.GameId]
+
+if not selected then
+    warn("[Soulless Scripts] Unsupported game. No script was loaded.")
+    return
+end
+
+if type(loadstring) ~= "function" then
+    warn("[Soulless Scripts] This environment does not support loadstring.")
+    return
+end
+
+local downloaded, source = pcall(function()
+    return game:HttpGet(selected.url)
+end)
+
+if not downloaded or type(source) ~= "string" or source == "" then
+    warn("[Soulless Scripts] Failed to download " .. selected.name .. ".")
+    if not downloaded then
+        warn(tostring(source))
+    end
+    return
+end
+
+local compiled, scriptFunction = pcall(loadstring, source)
+
+if not compiled or type(scriptFunction) ~= "function" then
+    warn("[Soulless Scripts] Failed to compile " .. selected.name .. ".")
+    if not compiled then
+        warn(tostring(scriptFunction))
+    end
+    return
+end
+
+print("[Soulless Scripts] Loading " .. selected.name .. "...")
+
+local ran, runtimeError = pcall(scriptFunction)
+
+if not ran then
+    warn("[Soulless Scripts] " .. selected.name .. " stopped with an error:")
+    warn(tostring(runtimeError))
+end
