@@ -1,3 +1,4 @@
+
 -- SOULLESS SCRIPTS | CENTRAL LOADER
 -- One loadstring for all supported experiences.
 -- Uses Roblox Universe IDs (game.GameId).
@@ -26,6 +27,11 @@ local SCRIPTS = {
     [1016936714] = {
         name = "Your Bizarre Adventure",
         url = "https://raw.githubusercontent.com/aeternus-acheron/your-bizzare-adventure/refs/heads/main/yba"
+    },
+
+    [7326934954] = {
+        name = "99 Nights in the Forest",
+        url = "https://raw.githubusercontent.com/aeternus-acheron/happy/refs/heads/main/iguess"
     }
 }
 
