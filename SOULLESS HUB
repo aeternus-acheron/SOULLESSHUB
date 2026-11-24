@@ -32,6 +32,11 @@ local SCRIPTS = {
     [7326934954] = {
         name = "99 Nights in the Forest",
         url = "https://raw.githubusercontent.com/aeternus-acheron/happy/refs/heads/main/iguess"
+    },
+
+    [10773907070] = {
+        name = "Rochess",
+        url = "https://raw.githubusercontent.com/aeternus-acheron/chess/refs/heads/main/chess"
     }
 }
 
